@@ -31,6 +31,8 @@ class Player:
                     return self.more(game_state, me)
                 elif self.flush(comm, my):
                     return self.more(game_state, me)
+                else:
+                    return 0
         except:
             pass
         minimal_amount = int(game_state["minimum_raise"])
@@ -72,3 +74,32 @@ class Player:
             return True
 
         return False
+
+    def flush_draw(self, comm, my):
+        cards = comm + my
+        card_map = {}
+        for card in cards:
+            if card_map.has_key(card['suit']):
+                card_map[card['suit']] += 1
+            else:
+                card_map[card['suit']] = 1                
+        if max(card_map.values()) >= 4:
+            return True
+
+        return False
+    
+
+    def strit_draw(self, comm, my):
+        cards = comm + my
+        card_map = {}
+        for card in cards:
+            if card_map.has_key(card['suit']):
+                card_map[card['suit']] += 1
+            else:
+                card_map[card['suit']] = 1                
+        if max(card_map.values()) >= 4:
+            return True
+
+        return False
+    
+    
