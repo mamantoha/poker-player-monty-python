@@ -23,7 +23,7 @@ class Player:
                 offer = 0
                 if get_rank > 4:
                     offer = minimal_amount
-                return minimal_amount
+                return offer
             else:
                 if self.pair(comm, my):
                     return self.more(game_state, me)
