@@ -8,7 +8,7 @@ class Player:
             print "before"
             for player in  game_state['players']:
                 if player['name'] == 'Monty Python':
-                    print 'found"
+                    print 'found'
                     for card in player['hole_cards']:
                         if card['rank'] == 'A':
                             print "all in", player['stack']
