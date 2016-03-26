@@ -8,7 +8,7 @@ class Player:
                 for card in player['hole_cards']:
                     if card['rank'] == 'A':
                         return player['stack']
-        return 0
+        return 300
 
     def showdown(self, game_state):
         pass
