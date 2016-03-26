@@ -9,8 +9,13 @@ class Player:
                 return p
 
     def betRequest(self, game_state):
-
-            return 270
+        for player in  game_state['players']:
+            if player['name'] == 'Monty Python':
+                print 'found'
+                for card in player['hole_cards']:
+                    if card['rank'] == 'A':
+                        print "all in", player['stack']
+                        return player['stack']
 
     def showdown(self, game_state):
         pass
