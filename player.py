@@ -1,7 +1,9 @@
 import random
+from middleware import *
+
 
 class Player:
-    VERSION = "Default Python folding player"
+    VERSION = "We are not afraid of the rabbit"
 
     def betRequest(self, game_state):
         comm = game_state['community_cards']
