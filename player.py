@@ -28,7 +28,7 @@ class Player:
             if is_preflop(game_state) and (player_count == 2):
                 if game_state['current_buy_in'] < 200:
                     return game_state['current_buy_in']
-            if (player_count > 2) and not is_preflop(game_state):
+            if not is_preflop(game_state):
                 if get_rank > 0:
                     return self.more(game_state, me)
                 else:
@@ -39,17 +39,8 @@ class Player:
                     if cond.count(True) >= 2:
                         return self.more(game_state, me)
                 return 0
-            elif is_preflop(game_state):
-                if sorryForMySlowness(my) <= players_map[player_count]:
-                    return self.more(game_state, me)
-                else:
-                    return 0
             else:
-                if self.pair(comm, my):
-                    return self.more(game_state, me)
-                elif self.ace(comm, my):
-                    return self.more(game_state, me)
-                elif self.flush(comm, my):
+                if sorryForMySlowness(my) <= players_map[player_count]:
                     return self.more(game_state, me)
                 else:
                     return 0
