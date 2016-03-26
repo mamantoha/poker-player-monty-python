@@ -1,14 +1,14 @@
 import random
 from middleware import *
 
+list_of_combinations = [('A', 'A', 'p'), ('K', 'K', 'p'), ('3', '3', 'p'), ('4', '4', 'p'), ('5', '5', 'p'),
+                        ('6', '6', 'p'),('7', '7', 'p'),('8', '8', 'p'),('9', '9', 'p'),('10', '10', 'p'),('J', 'J', 'p'),('Q', 'Q', 'p')]
 
 class Player:
     VERSION = "We are not afraid of the rabbit"
 
     def betRequest(self, game_state):
         try:
-            list_of_combinations = [('A', 'A', 'p'), ('K', 'K', 'p'), ('3', '3', 'p'), ('4', '4', 'p'), ('5', '5', 'p'),
-                                    ('6', '6', 'p'),('7', '7', 'p'),('8', '8', 'p'),('9', '9', 'p'),('10', '10', 'p'),('J', 'J', 'p'),('Q', 'Q', 'p')]
     
             comm = game_state['community_cards']
             my = self.me(game_state)['hole_cards']
@@ -43,7 +43,7 @@ class Player:
     def pair(self, comm, my):
         for card in my:
             same = [comm_card for comm_card in comm if card['rank'] == comm_card['rank']]
-            if len(same) > 0 :
+            if len(same) >= 1 :
                 return True
         return False
         
