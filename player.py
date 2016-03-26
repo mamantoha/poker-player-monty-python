@@ -38,7 +38,7 @@ class Player:
                     cond += [self.flush_draw(comm, my)]
                     if cond.count(True) >= 2:
                         return self.more(game_state, me)
-                return 0
+                return self.more(game_state, me)
             else:
                 if sorryForMySlowness(my) <= players_map[player_count]:
                     return self.more(game_state, me)
