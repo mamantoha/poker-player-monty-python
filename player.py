@@ -15,6 +15,16 @@ class Player:
         me = self.me(game_state)
         
         
+        
+        if is_preflop(game_state):
+            print 'Comix preflop'
+            for i in list_of_combinations:
+                a, b, c = i
+                    if my[0]['rank'] == a and my[1]['rank'] == b:
+                        for player in game_state['players']:
+                            print 'Comix preflop is made'
+                            return player['stack']
+        
 
         if self.pair(comm, my):
             return self.more(game_state, me)
