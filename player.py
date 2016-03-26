@@ -22,7 +22,7 @@ class Player:
         pass
 
     def more(self, game, me):
-        min(game['current_buy_in'] * 2 , me['stack'])
+        return min(game['current_buy_in'] * 2 , me['stack'])
 
     def me(self, game_state):
         return game_state['players'][game_state['in_action']]
