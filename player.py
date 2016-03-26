@@ -6,6 +6,8 @@ from rank import *
 list_of_combinations = [('A', 'A', 'p'), ('K', 'K', 'p'), ('3', '3', 'p'), ('4', '4', 'p'), ('5', '5', 'p'),
                         ('6', '6', 'p'),('7', '7', 'p'),('8', '8', 'p'),('9', '9', 'p'),('10', '10', 'p'),('J', 'J', 'p'),('Q', 'Q', 'p')]
 
+
+
 class Player:
     VERSION = "We are not afraid of the rabbit"
 
@@ -91,15 +93,31 @@ class Player:
 
     def strit_draw(self, comm, my):
         cards = comm + my
-        card_map = {}
-        for card in cards:
-            if card_map.has_key(card['suit']):
-                card_map[card['suit']] += 1
-            else:
-                card_map[card['suit']] = 1                
-        if max(card_map.values()) >= 4:
-            return True
-
-        return False
+        scores = sorted([self.card_score(card) for card in cards])
+        max_len = 1
+        for i in range(len(scores)):
+            cur_len = 1
+            prev = scores[i]
+            for score in scores[:i+1]:
+                if prev + 1 == score:
+                    prev = score
+                    cur_len += 1
+                else:
+                    break
+            max_len = max(cur_len, max_len)
+        return max_len >= 4
     
-    
+    def card_score(self, card):
+        try:
+            return int(card['rank'])
+        except:
+            pass
+        if card['rank'] == 'J':
+            return 11
+        elif card['rank'] == 'Q':
+            return 12
+        elif card['rank'] == 'K':
+            return 13
+        elif card['rank'] == 'A':
+            return 14
+        return 0
