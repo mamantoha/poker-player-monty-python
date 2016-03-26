@@ -15,12 +15,7 @@ class Player:
         me = self.me(game_state)
         
         
-        if is_preflop(game_state):
-            for i in list_of_combinations:
-                a, b, c = i 
-                if hole_cards[0]['rank'] == a and hole_cards[1]['rank'] == b:
-                    for player in  game_state['players']:
-                        return player['stack']
+
         if self.pair(comm, my):
             return self.more(game_state, me)
         elif self.ace(comm, my):
