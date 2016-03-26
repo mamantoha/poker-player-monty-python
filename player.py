@@ -25,6 +25,9 @@ class Player:
             
             player_count = get_me_player_count(game_state)
             get_rank = rank(my+comm)
+            if is_preflop(game_state) and (player_count == 2):
+                if game_state['current_buy_in'] < 200:
+                    return game_state['current_buy_in']
             if (player_count > 2) and not is_preflop(game_state):
                 if get_rank > 1:
                     return self.more(game_state, me)
