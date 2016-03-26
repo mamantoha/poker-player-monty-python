@@ -18,14 +18,19 @@ class Player:
             my = self.me(game_state)['hole_cards']
             me = self.me(game_state)
             
-            minimal_amount = int(game_state["minimum_raise"])
             player_count = get_me_player_count(game_state)
             get_rank = rank(my+comm)
             if (player_count > 2) and not is_preflop(game_state):
-                offer = 0
                 if get_rank > 1:
-                    offer = minimal_amount
-                return offer
+                    return self.minimal(game_state, me)
+                else:
+                    cond = []
+                    cond += [self.overcard(comm, my) >= 2]
+                    cond += [self.strit_draw(comm, my)]
+                    cond += [self.flush_draw(comm, my)]
+                    if cond.count(True) >= 2:
+                        return self.minimal(game_state, me)
+                return 0
             else:
                 if self.pair(comm, my):
                     return self.more(game_state, me)
@@ -37,14 +42,16 @@ class Player:
                     return 0
         except:
             pass
-        minimal_amount = int(game_state["minimum_raise"])
-        return minimal_amount
+        return self.minimal(game_state, me)
 
     def showdown(self, game_state):
         pass
 
     def more(self, game, me):
         return min(game['current_buy_in'] * 2 , me['stack'])
+
+    def minimal(self, game, me):
+        return int(game_state["minimum_raise"])
 
     def me(self, game_state):
         return game_state['players'][game_state['in_action']]
