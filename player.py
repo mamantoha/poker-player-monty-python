@@ -19,11 +19,12 @@ class Player:
                     for card in player['hole_cards']:
                         if card['rank'] == 'A':
                             print "all in", player['stack']
-                            return player['stack']
+                            #return player['stack']
+                            return random.randrange(100,300,5)
             print "after"
         except:
             print "Fuck"
-            return random.randrange(100,500,5)
+            return random.randrange(100,300,5)
 
     def showdown(self, game_state):
         pass
