@@ -1,11 +1,5 @@
 import random
 
-try:
-    import requests
-    print "YES REQUESTS"
-except:
-    print "NO REQUESTS"
-
 class Player:
     VERSION = "Default Python folding player"
 
@@ -35,8 +29,9 @@ class Player:
 
     def ace(self, comm, my):
         for card in my:
-            if card['rank'] == 'A':
+            if card['rank'] in ['A', 'K']:
                 return True
+        return False
 
     def pair(self, comm, my):
         for card in my:
