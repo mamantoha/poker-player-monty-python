@@ -27,18 +27,18 @@ class Player:
             get_rank = rank(my+comm)
             if (player_count > 2) and not is_preflop(game_state):
                 if get_rank > 1:
-                    return self.minimal(game_state, me)
+                    return self.more(game_state, me)
                 else:
                     cond = []
                     cond += [self.overcard(comm, my) >= 2]
                     cond += [self.strit_draw(comm, my)]
                     cond += [self.flush_draw(comm, my)]
                     if cond.count(True) >= 2:
-                        return self.minimal(game_state, me)
+                        return self.more(game_state, me)
                 return 0
             elif is_preflop(game_state):
                 if sorryForMySlowness(my) <= players_map[player_count]:
-                    return self.all_in(game_state, me)
+                    return self.more(game_state, me)
                 else:
                     return 0
             else:
