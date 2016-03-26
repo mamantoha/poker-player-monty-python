@@ -1,3 +1,4 @@
+import random
 
 class Player:
     VERSION = "Default Python folding player"
@@ -8,7 +9,7 @@ class Player:
                 for card in player['hole_cards']:
                     if card['rank'] == 'A':
                         return player['stack']
-        return 300
+        return random.randrange(100,500,5)
 
     def showdown(self, game_state):
         pass
