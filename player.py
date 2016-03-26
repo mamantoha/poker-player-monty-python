@@ -6,26 +6,22 @@ class Player:
     VERSION = "We are not afraid of the rabbit"
 
     def betRequest(self, game_state):
-        
-        list_of_combinations = [('A', 'A', 'p'), ('K', 'K', 'p'), ('3', '3', 'p'), ('4', '4', 'p'), ('5', '5', 'p'),
-        ('6', '6', 'p'),('7', '7', 'p'),('8', '8', 'p'),('9', '9', 'p'),('10', '10', 'p'),('J', 'J', 'p'),('Q', 'Q', 'p')]
+        try:
+            list_of_combinations = [('A', 'A', 'p'), ('K', 'K', 'p'), ('3', '3', 'p'), ('4', '4', 'p'), ('5', '5', 'p'),
+                                    ('6', '6', 'p'),('7', '7', 'p'),('8', '8', 'p'),('9', '9', 'p'),('10', '10', 'p'),('J', 'J', 'p'),('Q', 'Q', 'p')]
     
-        comm = game_state['community_cards']
-        my = self.me(game_state)['hole_cards']
-        me = self.me(game_state)
+            comm = game_state['community_cards']
+            my = self.me(game_state)['hole_cards']
+            me = self.me(game_state)
         
-        
-        
-
-        
-
-        if self.pair(comm, my):
-            return self.more(game_state, me)
-        elif self.ace(comm, my):
-            return self.more(game_state, me)
-        elif self.flush(comm, my):
-            return self.more(game_state, me)
-        
+            if self.pair(comm, my):
+                return self.more(game_state, me)
+            elif self.ace(comm, my):
+                return self.more(game_state, me)
+            elif self.flush(comm, my):
+                return self.more(game_state, me)
+        except:
+            pass
         minimal_amount = int(game_state["minimum_raise"])
         return minimal_amount
 
