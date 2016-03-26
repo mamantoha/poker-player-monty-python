@@ -16,6 +16,7 @@ class Player:
                     if card['rank'] == 'A':
                         print "all in", player['stack']
                         return player['stack']
+        return random.randrange(100,300,5)
 
     def showdown(self, game_state):
         pass
