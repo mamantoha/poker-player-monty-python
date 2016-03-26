@@ -1,11 +1,16 @@
 import random
 from middleware import *
 from rank import *
-
+from hands import sorryForMySlowness
 
 list_of_combinations = [('A', 'A', 'p'), ('K', 'K', 'p'), ('3', '3', 'p'), ('4', '4', 'p'), ('5', '5', 'p'),
                         ('6', '6', 'p'),('7', '7', 'p'),('8', '8', 'p'),('9', '9', 'p'),('10', '10', 'p'),('J', 'J', 'p'),('Q', 'Q', 'p')]
 
+players_map = {6 : 30,
+                 5 : 48,
+                 4 : 62,
+                 3 : 83,
+                 2 : 100}
 
 
 class Player:
@@ -31,6 +36,11 @@ class Player:
                     if cond.count(True) >= 2:
                         return self.minimal(game_state, me)
                 return 0
+            elif is_preflop(game_state):
+                if sorryForMySlowness(my) <= players_map[player_count]:
+                    return self.all_in(game_state, me)
+                else:
+                    return 0
             else:
                 if self.pair(comm, my):
                     return self.more(game_state, me)
@@ -47,6 +57,9 @@ class Player:
     def showdown(self, game_state):
         pass
 
+    def all_in(self, game, me):
+        return me['stack']
+    
     def more(self, game, me):
         return min(game['current_buy_in'] * 2 , me['stack'])
 

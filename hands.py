@@ -71,26 +71,26 @@ list_of_combinations = [('A', 'A', 'p'), ('K', 'K', 'p'), ('A', 'K', 's'), ('Q',
 
 sort = {'A': 1, 'K': 2, 'Q': 3, 'J': 4, '10': 5, '9': 6, '8': 7, '7': 8, '6': 9, '5': 10, '4': 11, '3': 12, '2': 13}
 
-for i in list_of_combinations:
-    a, b, c = i
+# for i in list_of_combinations:
+#     a, b, c = i
 
-    value1 = sort.get(my[0]['rank'])
-    value2 = sort.get(my[1]['rank'])
+#     value1 = sort.get(my[0]['rank'])
+#     value2 = sort.get(my[1]['rank'])
 
-    if value1 > value2:
-        swapted1 = my[0]
+#     if value1 > value2:
+#         swapted1 = my[0]
 
-        my[0] = my[1]
-        my[1] = swapted1
-    if my[0]['suit'] == my[1]['suit']:
-        suited = 's'
-    elif my[0]['rank'] != my[1]['rank']:
-        suited = 'o'
-    else:
-        suited = 'p'
-    if my[0]['rank'] == a and my[1]['rank'] == b and suited == c:
+#         my[0] = my[1]
+#         my[1] = swapted1
+#     if my[0]['suit'] == my[1]['suit']:
+#         suited = 's'
+#     elif my[0]['rank'] != my[1]['rank']:
+#         suited = 'o'
+#     else:
+#         suited = 'p'
+#     if my[0]['rank'] == a and my[1]['rank'] == b and suited == c:
 
-        print list_of_combinations.index(i)
+#         print list_of_combinations.index(i)
 
 
 def sorryForMySlowness(my):
