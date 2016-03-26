@@ -106,6 +106,11 @@ class Player:
                     break
             max_len = max(cur_len, max_len)
         return max_len >= 4
+
+    def overcard(self, comm, my):
+        max_comm = max([self.card_score(card) for card in comm])
+        my_scores = [self.card_score(card) for card in my]
+        return len([True for i in my_scores if i > max_comm])
     
     def card_score(self, card):
         try:
@@ -121,3 +126,5 @@ class Player:
         elif card['rank'] == 'A':
             return 14
         return 0
+
+    
