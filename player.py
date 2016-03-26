@@ -51,7 +51,7 @@ class Player:
         return min(game['current_buy_in'] * 2 , me['stack'])
 
     def minimal(self, game, me):
-        return int(game_state["minimum_raise"])
+        return int(game["minimum_raise"])
 
     def me(self, game_state):
         return game_state['players'][game_state['in_action']]
