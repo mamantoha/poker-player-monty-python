@@ -21,7 +21,7 @@ class Player:
             get_rank = rank(my+comm)
             if (player_count > 2) and not is_preflop(game_state):
                 offer = 0
-                if get_rank > 4:
+                if get_rank > 1:
                     offer = minimal_amount
                 return offer
             else:
@@ -55,8 +55,8 @@ class Player:
 
     def pair(self, comm, my):
         for card in my:
-            same = [comm_card for comm_card in comm if card['rank'] == comm_card['rank']]
-            if len(same) >= 1 :
+            same = [comm_card for comm_card in comm + my if card['rank'] == comm_card['rank']]
+            if len(same) >= 2 :
                 return True
         return False
         
