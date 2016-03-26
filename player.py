@@ -36,3 +36,15 @@ class Player:
         
         
 
+    def flush(self, comm, my):
+        cards = comm + my
+        card_map = {}
+        for card in cards:
+            if card_map.has_key(card['suit']):
+                card_map[card['suit']] += 1
+            else:
+                card_map[card['suit']] = 1                
+        if max(card_map.values()) >= 5:
+            return True
+
+        return False
