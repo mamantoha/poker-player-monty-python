@@ -98,7 +98,7 @@ class Player:
         for i in range(len(scores)):
             cur_len = 1
             prev = scores[i]
-            for score in scores[:i+1]:
+            for score in scores[i+1:]:
                 if prev + 1 == score:
                     prev = score
                     cur_len += 1
