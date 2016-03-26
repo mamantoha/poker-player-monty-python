@@ -9,15 +9,19 @@ class Player:
         me = self.me(game_state)
 
         if self.pair(comm, my):
-            return me['stack']
-            
-        if self.ace(comm, my):
-            return me['stack']
-            
+            return self.more(game_state, me)
+        elif self.ace(comm, my):
+            return self.more(game_state, me)
+        elif self.flush(comm, my):
+            return self.more(game_state, me)
+        
         return random.randrange(100,300,5)
 
     def showdown(self, game_state):
         pass
+
+    def more(self, game, me):
+        min(game['current_buy_in'] * 2 , me['stack'])
 
     def me(self, game_state):
         return game_state['players'][game_state['in_action']]
