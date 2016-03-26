@@ -5,12 +5,17 @@ class Player:
 
     def betRequest(self, game_state):
         try:
+            print "before"
             for player in  game_state['players']:
                 if player['name'] == 'Monty Python':
+                    print 'found"
                     for card in player['hole_cards']:
                         if card['rank'] == 'A':
+                            print "all in", player['stack']
                             return player['stack']
+            print "after"
         except:
+            print "Fuck"
             return random.randrange(100,500,5)
 
     def showdown(self, game_state):
