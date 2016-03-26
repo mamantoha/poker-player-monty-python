@@ -1,5 +1,11 @@
 import random
 
+try:
+    import requests
+    print "YES REQUESTS"
+except:
+    print "NO REQUESTS"
+
 class Player:
     VERSION = "Default Python folding player"
 
