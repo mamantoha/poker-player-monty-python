@@ -4,7 +4,7 @@ class Player:
 
     def betRequest(self, game_state):
         # print game_state
-        return 1000
+        return 300
 
     def showdown(self, game_state):
         pass
