@@ -21,7 +21,8 @@ class Player:
         elif self.flush(comm, my):
             return self.more(game_state, me)
         
-        return random.randrange(100,300,5)
+        minimal_amount = int(game_state["minimum_raise"])
+        return minimal_amount
 
     def showdown(self, game_state):
         pass
